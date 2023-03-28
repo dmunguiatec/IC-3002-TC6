@@ -17,12 +17,15 @@ def generar_peor_caso(n):
 
 def generar_caso_promedio(n):
     raise NotImplementedError()
-
+          
 def _graficar(fitted, titulo):
     xs = fitted['measures']
     ys = fitted['times']
-    gp.plot(xs, ys, _with='lines', terminal='dumb 60,30',
-            unset='grid', title=titulo, xlabel='n', ylabel='tiempo')
+
+    if importlib.util.find_spec('gnuplotlib') is not None:
+        import gnuplotlib as gp
+        gp.plot(xs, ys, _with='lines', terminal='dumb 60,30',
+                unset='grid', title=titulo, xlabel='n', ylabel='tiempo')
 
     for k, v in fitted.items():
         if isinstance(k, big_o.complexities.ComplexityClass):
