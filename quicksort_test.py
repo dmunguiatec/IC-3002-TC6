@@ -1,6 +1,7 @@
+import importlib
+
 import big_o
 from big_o import complexities as cmpl
-import gnuplotlib as gp
 import math
 import numpy as np
 from random import shuffle
